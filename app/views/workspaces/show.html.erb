@@ -1,0 +1,11 @@
+<h2><%= @workspace.name %></h2>
+<h3>Equipment Types</h3>
+<ul>
+  <% @equipment_types.each do |equipment_type| %>
+    <li>
+      <%= equipment_type.name %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'New Equipment Type', new_workspace_equipment_type_path(@workspace) %>
+Total count: <%= @equipment_types.count %>

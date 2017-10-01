@@ -1,0 +1,2 @@
+class PlanOfMaintenance < ApplicationRecord
+end

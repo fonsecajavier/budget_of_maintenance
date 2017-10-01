@@ -1,0 +1,3 @@
+module AppConstants
+  DEFAULT_INTERVAL_OF_MAINTENANCE = 250
+end

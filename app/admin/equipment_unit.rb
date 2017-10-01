@@ -1,6 +1,5 @@
 ActiveAdmin.register EquipmentUnit do
-  #belongs_to [:workspace, :equipment_type]
-  belongs_to :equipment_type
+  belongs_to :equipment_type, optional: true
   permit_params :name
 
 # See permitted parameters documentation:

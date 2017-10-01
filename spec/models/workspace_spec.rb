@@ -7,6 +7,6 @@ RSpec.describe Workspace, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:default_interval_of_maintenance) }
+    it { is_expected.to validate_presence_of(:default_maintenance_interval) }
   end
 end

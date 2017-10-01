@@ -1,2 +1,0 @@
-class PlanOfMaintenance < ApplicationRecord
-end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171001184250) do
+ActiveRecord::Schema.define(version: 20171001192313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,18 +62,19 @@ ActiveRecord::Schema.define(version: 20171001184250) do
     t.index ["equipment_type_id"], name: "index_equipment_units_on_equipment_type_id"
   end
 
-  create_table "plan_of_maintenances", force: :cascade do |t|
+  create_table "maintenance_plans", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "equipment_type_id", null: false
+    t.decimal "cost", precision: 16, scale: 2, null: false
     t.integer "interval", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["equipment_type_id"], name: "index_plan_of_maintenances_on_equipment_type_id"
+    t.index ["equipment_type_id"], name: "index_maintenance_plans_on_equipment_type_id"
   end
 
   create_table "workspaces", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "default_interval_of_maintenance", null: false
+    t.integer "default_maintenance_interval", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

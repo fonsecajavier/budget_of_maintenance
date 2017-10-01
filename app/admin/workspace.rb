@@ -1,5 +1,5 @@
 ActiveAdmin.register Workspace do
-  permit_params :name, :default_interval_of_maintenance
+  permit_params :name, :default_maintenance_interval
 
   sidebar 'Workspace Details', only: [:show, :edit] do
     ul do
@@ -7,12 +7,13 @@ ActiveAdmin.register Workspace do
     end
   end
 
-  form do |f|
-    inputs do
-      input :name
-      input :default_interval_of_maintenance, input_html: { placeholder: AppConstants::DEFAULT_INTERVAL_OF_MAINTENANCE }
+  controller do
+    def new(options={}, &block)
+      r = build_resource
+      r.default_maintenance_interval ||= AppConstants::DEFAULT_MAINTENANCE_INTERVAL
+      respond_with(*with_chain(r), options, &block)
     end
-    actions
+
   end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

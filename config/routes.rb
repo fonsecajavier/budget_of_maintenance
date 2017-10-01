@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  namespace :admin do
-    resources :workspaces do
-      resources :equipment_types do
-        resources :equipment_units
-      end
-    end
-  end
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

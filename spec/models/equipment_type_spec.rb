@@ -7,6 +7,10 @@ RSpec.describe EquipmentType, type: :model do
     it { is_expected.to have_many(:maintenance_plans) }
   end
 
+  describe 'delegations' do
+    it { is_expected.to delegate_method(:default_monthly_usage).to(:workspace) }
+  end
+
   describe 'nested attributes' do
     it { is_expected.to accept_nested_attributes_for(:maintenance_plans).allow_destroy(true) }
   end

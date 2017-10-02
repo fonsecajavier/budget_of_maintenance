@@ -1,5 +1,5 @@
 ActiveAdmin.register Workspace do
-  permit_params :name, :default_maintenance_interval
+  permit_params :name, :default_monthly_usage
 
   sidebar 'Workspace Details', only: [:show, :edit] do
     ul do
@@ -10,7 +10,7 @@ ActiveAdmin.register Workspace do
   controller do
     def new(options={}, &block)
       r = build_resource
-      r.default_maintenance_interval ||= AppConstants::DEFAULT_MAINTENANCE_INTERVAL
+      r.default_monthly_usage ||= AppConstants::DEFAULT_MONTHLY_USAGE
       respond_with(*with_chain(r), options, &block)
     end
 

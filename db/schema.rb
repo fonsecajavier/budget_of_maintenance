@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171001192313) do
 
   create_table "equipment_units", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "initial_hourmeter", null: false
     t.bigint "equipment_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(version: 20171001192313) do
 
   create_table "workspaces", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "default_maintenance_interval", null: false
+    t.integer "default_monthly_usage", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

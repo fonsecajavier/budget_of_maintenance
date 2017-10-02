@@ -57,7 +57,8 @@ class EquipmentUnit < ApplicationRecord
   private
 
   def maintenance_stops_for_plan(plan)
-    SortedSet.new.tap do |stops|
+    @maintenance_stops_for_plan ||= {}
+    @maintenance_stops_for_plan["plan_#{plan.id}"] ||= SortedSet.new.tap do |stops|
       current_stop = (initial_hourmeter.to_f / plan.interval).ceil * plan.interval
       while current_stop <= max_yearly_usage do
         stops << current_stop

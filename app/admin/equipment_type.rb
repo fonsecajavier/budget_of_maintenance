@@ -1,5 +1,5 @@
 ActiveAdmin.register EquipmentType do
-  belongs_to :workspace, optional: true
+  belongs_to :workspace
   permit_params :name, maintenance_plans_attributes: [:id, :_destroy, :name, :cost, :interval]
 
   sidebar 'Equipment Type Details', only: [:show, :edit] do

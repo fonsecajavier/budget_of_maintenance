@@ -1,6 +1,6 @@
 ActiveAdmin.register EquipmentUnit do
-  belongs_to :equipment_type, optional: true
-  permit_params :name
+  belongs_to :equipment_type
+  permit_params :name, :initial_hourmeter
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

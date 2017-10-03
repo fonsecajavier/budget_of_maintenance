@@ -33,5 +33,7 @@ en:
   number:
     currency:
       format:
+        delimiter: '.'
+        separator: ','
         strip_insignificant_zeros: true
   hello: "Hello world"

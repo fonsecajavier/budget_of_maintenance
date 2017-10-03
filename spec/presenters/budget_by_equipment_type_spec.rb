@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BudgetByEquipmentUnit do
+RSpec.describe BudgetByEquipmentType do
   describe '#output' do
     let!(:workspace) { create(:workspace, default_monthly_usage: 600) }
     let!(:equipment_type_1) { create(:equipment_type, :with_maintenance_plans, workspace: workspace) }
@@ -9,7 +9,7 @@ RSpec.describe BudgetByEquipmentUnit do
     let!(:equipment_unit_t1_2) { create(:equipment_unit, equipment_type: equipment_type_1, initial_hourmeter: 3900) }
     let!(:equipment_unit_t2_1) { create(:equipment_unit, equipment_type: equipment_type_2, initial_hourmeter: 5000) }
 
-    subject { BudgetByEquipmentUnit.new(workspace).output }
+    subject { BudgetByEquipmentType.new(workspace).output }
 
     before(:each) do
       [60_000, 130_000, 600_000, 1_000_000].each_with_index do |cost, index|

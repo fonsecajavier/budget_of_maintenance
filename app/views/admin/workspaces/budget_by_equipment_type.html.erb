@@ -1,0 +1,22 @@
+<table class="index_table">
+  <thead>
+  <tr>
+    <th>Equipment Type</th>
+    <% (1..12).each do |month| %>
+      <th><%= Date::MONTHNAMES[month] %></th>
+    <% end %>
+  </th>
+  </thead>
+  <% @presenter.output.each do |type| %>
+    <tr>
+      <td>
+        <%= link_to type[:name], admin_workspace_equipment_type_path(@workspace, type[:id]) %>
+      </td>
+      <% (1..12).each do |month| %>
+        <td>
+          <%= number_to_currency(type[:budget_per_month][month - 1]) %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

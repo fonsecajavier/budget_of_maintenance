@@ -1,0 +1,22 @@
+<table class="index_table">
+  <thead>
+  <tr>
+    <th>Equipment Name</th>
+    <% (1..12).each do |month| %>
+      <th><%= Date::MONTHNAMES[month] %></th>
+    <% end %>
+  </th>
+  </thead>
+  <% @presenter.output.each do |unit| %>
+    <tr>
+      <td>
+        <%= link_to unit[:name], admin_equipment_type_equipment_unit_path(unit[:equipment_type_id], unit[:id]) %>
+      </td>
+      <% (1..12).each do |month| %>
+        <td>
+          <%= number_to_currency(unit[:budget_per_month][month - 1]) %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -1,5 +1,4 @@
 module AppConstants
-  DEFAULT_MONTHLY_USAGE = 250
   DEFAULT_MAINTENANCE_PLANS = [
     {
       name: 'PM 250',

@@ -1,6 +1,6 @@
 ActiveAdmin.register EquipmentType do
   belongs_to :workspace
-  permit_params :name, maintenance_plans_attributes: [:id, :_destroy, :name, :cost, :interval]
+  permit_params :name, :default_monthly_usage, maintenance_plans_attributes: [:id, :_destroy, :name, :cost, :interval]
 
   sidebar 'Equipment Type Details', only: [:show, :edit] do
     ul do
@@ -11,6 +11,7 @@ ActiveAdmin.register EquipmentType do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :default_monthly_usage
     end
     f.inputs do
       f.has_many :maintenance_plans, allow_destroy: true do |fp|
@@ -25,6 +26,7 @@ ActiveAdmin.register EquipmentType do
   show do
     attributes_table do
       row :name
+      row :default_monthly_usage
       row :workspace
       row :created_at
       row :updated_at

@@ -4,10 +4,7 @@ class EquipmentUnit < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :initial_hourmeter
-
-  def monthly_usage
-    equipment_type.default_monthly_usage
-  end
+  validates_presence_of :monthly_usage
 
   def max_yearly_usage
     @max_yearly_usage ||= initial_hourmeter + monthly_usage * 12

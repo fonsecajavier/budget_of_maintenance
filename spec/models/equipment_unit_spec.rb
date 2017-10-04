@@ -9,20 +9,11 @@ RSpec.describe EquipmentUnit, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:initial_hourmeter) }
-  end
-
-  describe '#monthly_usage' do
-    let!(:workspace) { create(:workspace, default_monthly_usage: 169) }
-    let!(:equipment_type) { create(:equipment_type, workspace: workspace) }
-    subject { build(:equipment_unit, equipment_type: equipment_type) }
-
-    it 'returns same value as related workspace' do
-      expect(subject.monthly_usage).to eq(169)
-    end
+    it { is_expected.to validate_presence_of(:monthly_usage) }
   end
 
   describe '#max_yearly_usage' do
-    subject { build(:equipment_unit, initial_hourmeter: 3090) }
+    subject { build(:equipment_unit, initial_hourmeter: 3090, monthly_usage: 500) }
 
     it 'should return the right value' do
       expect(subject.max_yearly_usage).to eq(9090)
@@ -31,7 +22,7 @@ RSpec.describe EquipmentUnit, type: :model do
 
   describe '#maintenance_stops' do
     let(:equipment_type) { create(:equipment_type, :with_maintenance_plans) }
-    subject { build(:equipment_unit, equipment_type: equipment_type, initial_hourmeter: 3090) }
+    subject { build(:equipment_unit, equipment_type: equipment_type, initial_hourmeter: 3090, monthly_usage: 500) }
 
     it 'returns a sorted set' do
       expect(subject.maintenance_stops).to be_a(Array)

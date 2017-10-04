@@ -15,14 +15,6 @@ ActiveAdmin.register Workspace do
     end
   end
 
-  controller do
-    def new(options={}, &block)
-      r = build_resource
-      r.default_monthly_usage ||= AppConstants::DEFAULT_MONTHLY_USAGE
-      respond_with(*with_chain(r), options, &block)
-    end
-  end
-
   member_action :budget_by_equipment_type do
     @presenter = BudgetByEquipmentType.new(resource)
     respond_to do |format|

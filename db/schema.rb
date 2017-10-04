@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171001192313) do
+ActiveRecord::Schema.define(version: 20171004035231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20171001192313) do
     t.bigint "workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "default_monthly_usage"
     t.index ["workspace_id"], name: "index_equipment_types_on_workspace_id"
   end
 
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20171001192313) do
     t.bigint "equipment_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "monthly_usage", null: false
     t.index ["equipment_type_id"], name: "index_equipment_units_on_equipment_type_id"
   end
 
@@ -75,7 +77,6 @@ ActiveRecord::Schema.define(version: 20171001192313) do
 
   create_table "workspaces", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "default_monthly_usage", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

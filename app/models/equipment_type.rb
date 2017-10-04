@@ -1,7 +1,7 @@
 class EquipmentType < ApplicationRecord
   belongs_to :workspace
-  has_many :equipment_units
-  has_many :maintenance_plans
+  has_many :equipment_units, dependent: :destroy
+  has_many :maintenance_plans, dependent: :destroy
 
   validates_presence_of :name
 

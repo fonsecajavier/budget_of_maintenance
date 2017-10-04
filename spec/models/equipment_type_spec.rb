@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe EquipmentType, type: :model do
   describe 'relations' do
     it { is_expected.to belong_to(:workspace) }
-    it { is_expected.to have_many(:equipment_units) }
-    it { is_expected.to have_many(:maintenance_plans) }
+    it { is_expected.to have_many(:equipment_units).dependent(:destroy) }
+    it { is_expected.to have_many(:maintenance_plans).dependent(:destroy) }
   end
 
   describe 'delegations' do

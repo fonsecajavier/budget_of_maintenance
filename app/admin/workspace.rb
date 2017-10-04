@@ -25,11 +25,20 @@ ActiveAdmin.register Workspace do
 
   member_action :budget_by_equipment_type do
     @presenter = BudgetByEquipmentType.new(resource)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @presenter.to_csv }
+    end
   end
 
   member_action :budget_by_equipment_unit do
     @presenter = BudgetByEquipmentUnit.new(resource)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @presenter.to_csv }
+    end
   end
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

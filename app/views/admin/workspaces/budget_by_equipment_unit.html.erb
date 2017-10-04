@@ -20,3 +20,9 @@
     </tr>
   <% end %>
 </table>
+<div id="index_footer">
+  <div class="download_links">
+    <span>Download:</span>
+    <%= link_to 'CSV', budget_by_equipment_unit_admin_workspace_path(@presenter.workspace, format: 'csv') %>
+  </div>
+</div>

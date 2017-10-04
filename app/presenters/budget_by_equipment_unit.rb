@@ -19,4 +19,13 @@ class BudgetByEquipmentUnit
       }
     end
   end
+
+  def to_csv
+    @csv_string ||= CSV.generate do |csv|
+      csv << ['Equipment Name'].concat(Date::MONTHNAMES[1..-1])
+      output.each do |unit|
+        csv << [unit[:name]].concat(unit[:budget_per_month].map(&:to_i))
+      end
+    end
+  end
 end
